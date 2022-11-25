@@ -1,4 +1,7 @@
+https://alfilatov.com/posts/run-chrome-without-cors/
+
 run this commande in your terminal to denay cros in your browser
+
 open -n -a /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome --args --user-data-dir="/tmp/chrome_dev_test" --disable-web-security
 
 
