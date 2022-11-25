@@ -233,3 +233,6 @@
     getbest()
     getStandings()
     getMatches()
+    etchJsonp('http://localhost:5500')
+    .then(res => res.json())
+    .then(json => console.log(json))
