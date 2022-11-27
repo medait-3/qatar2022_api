@@ -16,20 +16,20 @@
         })
         .then((response) => {
             const scorers = response.data.scorers
-            
-            document.getElementById("scorers").innerHTML = ""
+            let rank = 0;
 
-            for(scorer of scorers)
-            {
-                
 
                 
-                const content = `
+                let content = `
                 <div class="col-lg-12" style="margin-top: 20px">
                     <div class="card shadow border-none">
                       
           <div class=" card shadow  ">
-                <table class="table">
+          
+  `;
+  scorers.forEach((scorer) => {
+    content += `
+  <table class="table">
   <thead class="thead-dark">
     <tr>
       <th scope="col">team</th>
@@ -39,6 +39,7 @@
       <th scope="col">goals</th>
     </tr>
   </thead>
+  
   <tbody>
     <tr>
       <td><img class="rounded-circle border border-2" src="${scorer.team.crest}"  alt=""  style="width: 30px; height: 30px; object-fit: cover"> ${scorer.team.tla}</td>
@@ -49,14 +50,15 @@
      
     </tr>
   </tbody>
-</table>
-</div>
-                </div>
-                    
-                `
+</table>`;
+      });
+      content += `
+      </div>
+    </div>
+    `;
                 document.getElementById("scorers").innerHTML += content
             }
-        })
+        )
     }
 
 
@@ -191,7 +193,10 @@
             <div class=" card shadow  widget-next-match">
               
                 <div  class="text-center  card-header bg-primary widget-vs-contents  mb-4">
-                   <h4>${match.group}</h4>    
+                   <h4>${match.group}</h4>   
+                   <p>
+                    <span class="d-block">${dateString } GMT</span>
+                   </p>       
                 </div>
 
               <div class="widget-body mb-3">
@@ -213,11 +218,6 @@
                   </div>
                 </div>
               </div>
-                <div  class="text-center   widget-vs-contents  mb-4">
-                   <p>
-                    <span class="d-block">${dateString } GMT</span>
-                   </p>       
-                </div>
                 <div class="card-footer bg-primary">
                     ${ match.status} 
                 </div>
